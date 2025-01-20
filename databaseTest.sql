@@ -15,3 +15,7 @@ CREATE DATABASE laravel_project_todoapp_test;
 DESC todos;
 
 DESC users;
+
+SELECT * FROM users;
+
+SELECT * FROM todos;

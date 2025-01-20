@@ -20,10 +20,12 @@ class TodoTest extends TestCase
         $user = User::query()->first();
         $todos = $user->todos;
 
+        $this->logger->debug("User : " . json_encode($user));
+
         foreach ($todos as $todo) {
             $this->assertEquals($user->id, $todo->user_id);
             $this->assertEquals($user->id, $todo->user->id);
-            
+            $this->logger->debug("Todo : " . json_encode($todo));
         }
     }
 }
