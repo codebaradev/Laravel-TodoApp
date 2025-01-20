@@ -1,0 +1,23 @@
+@startuml TodoApp
+
+entity User {
+    * id : AUTO_INCREMNET <PK>
+    ---
+    * username : VARCHAR(320) Unique
+    * email : VARCHAR(320) Unique
+    email_verified_at : TIMESTAMP
+    * password : VARCHAR(100)
+    * created_at : TIMESTAMP
+    * updated_at : TIMESTAMP
+    remember_token : VARCHAR(100) 
+}
+
+entity Todo {
+    * id : AUTO_INCREMNET <PK>
+    ---
+    * title : VARCHAR(100)
+    due : TIMESTAMP
+    description : TEXT
+}
+
+@enduml
