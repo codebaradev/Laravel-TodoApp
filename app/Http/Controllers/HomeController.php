@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    public function index(Request $request) 
+    {
+        return response()->view('home.index', [
+            'title' => 'TodoApp'
+        ]);
+    }
+
+    public function dashboard()
+    {
+        return response()->view('home.dashboard', [
+            'title' => 'Dashboard'
+        ]);
+    }
+}
