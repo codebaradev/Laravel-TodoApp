@@ -16,6 +16,12 @@
             
             <h1>{{ $title }}</h1>
 
+            @if ($errors->has('username_or_email_or_password'))
+                <div class="errors-container">
+                    <p>{{ $errors->first('username_or_email_or_password') }}</p>
+                </div>
+            @endif
+
             @if ($isRegister)        
                 {{-- Register --}}
                 @include('auth.register')

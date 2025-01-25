@@ -26,7 +26,7 @@ class UserServiceImpl implements UserService
         ]);
     }
 
-    public function login(array $request): bool
+    public function login(array $request): ?User
     {
         // $user = User::query()->where(function (Builder $builder) use ($request) {
         //     $builder->where('username', '=', $request['username_or_email']);
@@ -35,7 +35,12 @@ class UserServiceImpl implements UserService
         
         // return $user ? true : false;
 
-        return Auth::attempt(['email' => $request['username_or_email'], 'password' => $request['password']]) || 
-            Auth::attempt(['username' => $request['username_or_email'], 'password' => $request['password']]);
+        if (Auth::attempt(['email' => $request['username_or_email'], 'password' => $request['password']]) || 
+            Auth::attempt(['username' => $request['username_or_email'], 'password' => $request['password']])) {
+        
+            return Auth::user();
+        } 
+        
+        return null;
     }
 }

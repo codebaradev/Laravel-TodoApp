@@ -2,7 +2,7 @@
     @csrf
     <div class="field">
         <label for="username-or-email">Username or Email</label>
-        <input type="text" name="username_or_email" id="username-or-email" placeholder="Username or Email" value="{{ old('username-or-email')}}">
+        <input type="text" name="username_or_email" id="username-or-email" placeholder="Username or Email" value="{{ old('username_or_email')}}">
         @if ($errors->has('username_or_email'))
             <p class="error-message">{{ $errors->first('username_or_email') }}</p>
         @endif

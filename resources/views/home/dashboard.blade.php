@@ -3,5 +3,10 @@
 @section('title', $title)
     
 @section('content')
-    dashboard
+    <section>
+        <div>
+            dashboard
+        </div>
+        <p>{{ $userId }}</p>
+    </section>
 @endsection

@@ -13,10 +13,11 @@ class HomeController extends Controller
         ]);
     }
 
-    public function dashboard()
+    public function dashboard(Request $request)
     {
         return response()->view('home.dashboard', [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'userId' => $request->session()->get('user_id')
         ]);
     }
 }
