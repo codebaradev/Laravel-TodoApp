@@ -16,18 +16,10 @@
         background-color: #212327;
         min-height: 100%;
 
-        .errors-container {
-            width: 85%;
-            border: 1px solid hsl(0, 100%, 70%);
-            background-color: hsl(0, 100%, 70%, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 10px 15px 10px;
-            border-radius: 5px;
-            p {
-                color: hsl(0, 100%, 70%)
-            };
+        .error-message {
+            color: red;
+            text-align: start;
+            font-size: 12px;
         }
 
         h1 {

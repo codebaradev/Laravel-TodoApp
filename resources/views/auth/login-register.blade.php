@@ -15,12 +15,6 @@
 
             
             <h1>{{ $title }}</h1>
-            
-            @if ($errors->any())
-                <div class="errors-container">
-                    <p>Testing</p>
-                </div>
-            @endif
 
             @if ($isRegister)        
                 {{-- Register --}}

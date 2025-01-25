@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Services\UserService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -23,12 +26,14 @@ class AuthController extends Controller
         ]);
     }
 
-    public function postRegister(Request $request)
+    public function postRegister(RegisterRequest $request): Response
     {
-        
+        $validatedData = $request->validated();
+
+        return response(json_encode($validatedData, JSON_PRETTY_PRINT));
     }
 
-    public function login()
+    public function login(): Response
     {
         return response()->view('auth.login-register', [
             'title' => 'Login',
@@ -36,9 +41,11 @@ class AuthController extends Controller
         ]);
     }
 
-    public function postLogin(Request $request)
+    public function postLogin(LoginRequest $request): Response
     {
-        return 'post login';
+        $validatedData = $request->validated();
+
+        return response(json_encode($validatedData, JSON_PRETTY_PRINT));
     }
 
     public function logout()
