@@ -9,6 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
@@ -62,7 +63,6 @@ class AuthController extends Controller
                 'username_or_email_or_password' => ['Username or email or password is incorrect'],
             ]);
         }
-
     }
 
     public function logout(Request $request)

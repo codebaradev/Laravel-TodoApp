@@ -19,11 +19,15 @@ class UserServiceImpl implements UserService
         // ]);
         // $user->save();
 
-        return User::query()->create([
+        $user = User::query()->create([
             'username' => $request['username'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
         ]);
+
+        Auth::login($user); // to authenticate the new user
+
+        return $user;
     }
 
     public function login(array $request): ?User
@@ -38,7 +42,7 @@ class UserServiceImpl implements UserService
         if (Auth::attempt(['email' => $request['username_or_email'], 'password' => $request['password']]) || 
             Auth::attempt(['username' => $request['username_or_email'], 'password' => $request['password']])) {
         
-            return Auth::user();
+            return Auth::user(); // return the authenticated user
         } 
         
         return null;

@@ -61,7 +61,7 @@ class UserServiceTest extends TestCase
         
         $result = $this->userService->login($request);
 
-        $this->assertTrue($result);
+        $this->assertNotNull($result);
     }
 
     public function testLoginUsername()
@@ -75,7 +75,7 @@ class UserServiceTest extends TestCase
         
         $result = $this->userService->login($request);
 
-        $this->assertTrue($result);
+        $this->assertNotNull($result);
     }
 
     public function testLoginInvalid()
@@ -89,6 +89,6 @@ class UserServiceTest extends TestCase
         
         $result = $this->userService->login($request);
 
-        $this->assertFalse($result);
+        $this->assertNull($result);
     }
 }

@@ -3,10 +3,19 @@
 @section('title', $title)
     
 @section('content')
-    <section>
-        <div>
-            dashboard
+    @include('partials.sidebar')
+
+    <section class="dashboard-section">
+        <div class="todolist-container">
+            <div class="todolist-header">
+
+            </div>
+
+            <div class="todolist-body">
+                <table class="todolsit-table">
+                    
+                </table>
+            </div>
         </div>
-        <p>{{ $userId }}</p>
     </section>
 @endsection
