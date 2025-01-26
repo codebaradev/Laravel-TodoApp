@@ -6,6 +6,6 @@ use App\Models\User;
 
 interface UserService 
 {
-    public function register(array $request): User;
-    public function login(array $request): ?User;
+    public function register(array $data): User;
+    public function login(array $data): ?User;
 }

@@ -16,7 +16,6 @@ entity Todo {
     * id : AUTO_INCREMNET <PK>
     ---
     * title : VARCHAR(100)
-    due : TIMESTAMP
     description : TEXT
 }
 

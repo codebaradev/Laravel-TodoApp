@@ -17,9 +17,10 @@ class Todo extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'user_id',
         'title',
         'description',
-        'user_id'
+        'is_completed'
     ];
 
     public function user(): BelongsTo

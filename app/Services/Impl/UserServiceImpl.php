@@ -10,19 +10,19 @@ use Illuminate\Support\Facades\Log;
 
 class UserServiceImpl implements UserService
 {
-    public function register(array $request): User
+    public function register(array $data): User
     {
         // $user = new User([
-        //     'username' => $request['username'],
-        //     'email' => $request['email'],
-        //     'password' => $request['password'],
+        //     'username' => $data['username'],
+        //     'email' => $data['email'],
+        //     'password' => $data['password'],
         // ]);
         // $user->save();
 
         $user = User::query()->create([
-            'username' => $request['username'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
         ]);
 
         Auth::login($user); // to authenticate the new user
@@ -30,17 +30,17 @@ class UserServiceImpl implements UserService
         return $user;
     }
 
-    public function login(array $request): ?User
+    public function login(array $data): ?User
     {
-        // $user = User::query()->where(function (Builder $builder) use ($request) {
-        //     $builder->where('username', '=', $request['username_or_email']);
-        //     $builder->orWhere('email', '=', $request['username_or_email']);
-        // })->where('password', '=', $request['password'])->first();
+        // $user = User::query()->where(function (Builder $builder) use ($data) {
+        //     $builder->where('username', '=', $data['username_or_email']);
+        //     $builder->orWhere('email', '=', $data['username_or_email']);
+        // })->where('password', '=', $data['password'])->first();
         
         // return $user ? true : false;
 
-        if (Auth::attempt(['email' => $request['username_or_email'], 'password' => $request['password']]) || 
-            Auth::attempt(['username' => $request['username_or_email'], 'password' => $request['password']])) {
+        if (Auth::attempt(['email' => $data['username_or_email'], 'password' => $data['password']]) || 
+            Auth::attempt(['username' => $data['username_or_email'], 'password' => $data['password']])) {
         
             return Auth::user(); // return the authenticated user
         } 
