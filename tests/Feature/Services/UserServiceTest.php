@@ -2,12 +2,14 @@
 
 namespace Tests\Feature\Services;
 
+use App\Models\User;
 use App\Services\UserService;
 use Database\Seeders\UserSeeder;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class UserServiceTest extends TestCase
@@ -90,5 +92,46 @@ class UserServiceTest extends TestCase
         $result = $this->userService->login($request);
 
         $this->assertNull($result);
+    }
+
+    public function testUpdate()
+    {
+        $this->seed([UserSeeder::class]);
+        
+        $data = [
+            'username' => 'codebaraedited',
+            'email' => 'codebaraedited@gmail.com'
+        ];
+
+        $oldUser = User::query()->first();
+        $this->actingAs($oldUser);
+
+        $result = $this->userService->update($data);
+
+        $updatedUser = User::query()->first();
+
+        $this->assertTrue($result);
+
+        $this->assertEquals($data['username'], $updatedUser->username);
+        $this->assertEquals($data['email'], $updatedUser->email);
+    }
+
+    public function testUpdatePassword()
+    {
+        $this->seed([UserSeeder::class]);        
+        $data = [
+            'new_password' => 'newpassword',
+        ];
+
+        $oldUser = User::query()->first();
+        $this->actingAs($oldUser);
+
+        $result = $this->userService->updatePassword($data);
+
+        $updatedUser = User::query()->first();
+
+        $this->assertTrue($result);
+
+        $this->assertTrue(Hash::check($data['new_password'], $updatedUser->password));
     }
 }

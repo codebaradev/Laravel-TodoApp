@@ -18,7 +18,7 @@
     </div>
 
     <div class="sidebar-footer">
-        <a class="sidebar-menu" href="/settings">
+        <a @class(['sidebar-menu', 'selected-menu' => $title == 'Settings']) class="sidebar-menu" href="/settings">
             <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 
                 <g id="SVGRepo_bgCarrier" stroke-width="0"/>

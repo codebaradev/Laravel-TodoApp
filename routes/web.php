@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Settings\AccountController;
 use App\Http\Controllers\TodoController;
 use App\Http\Middleware\MustLoginMiddleware;
 use App\Http\Middleware\MustNotLoginMiddleware;
@@ -48,4 +49,16 @@ Route::middleware([MustLoginMiddleware::class])->group(function () {
         
         Route::get('/todo/delete', function () {return redirect('/dashboard');});
         Route::post('/todo/delete', [TodoController::class, 'postDelete']);
+});
+
+// Settings
+
+// Account Settings
+
+Route::middleware([MustLoginMiddleware::class])->group(function () {
+        Route::get('/settings', function () {return response()->redirectTo('/settings/account');});
+        Route::get('/settings/account', [AccountController::class, 'index']);
+        Route::post('/settings/account', [AccountController::class, 'postIndex']);
+        Route::get('/settings/account/change-password', [AccountController::class, 'updatePassword']);
+        Route::post('/settings/account/change-password', [AccountController::class, 'postUpdatePassword']);
 });

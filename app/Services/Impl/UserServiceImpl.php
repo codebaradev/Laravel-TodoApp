@@ -47,4 +47,36 @@ class UserServiceImpl implements UserService
         
         return null;
     }
+
+    public function getCurrentUser(): ?User
+    {
+        return Auth::user();
+    }
+
+    public function update(array $data): bool
+    {
+        $user = Auth::user();
+
+        if ($user) {
+            $user->username = $data['username'];
+            $user->email = $data['email'];
+            $user->save();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function updatePassword(array $data): bool
+    {
+        $user = Auth::user();
+
+        if ($user) {
+            $user->password = bcrypt($data['password']);
+            $user->save();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
