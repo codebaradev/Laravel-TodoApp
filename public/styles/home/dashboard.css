@@ -1,0 +1,255 @@
+.dashboard-section {
+    /* background-color: red; */
+    margin-left: 200px;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    padding: 20px;
+
+    .todolist-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: hsl(220, 8%, 14%);
+        padding: 20px 20px;
+        border-radius: 10px;
+        gap: 10px;
+
+        .todolist-header {
+            display: flex;
+            /* justify-content: space-between; */
+            gap: 10px;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgb(93, 95, 101);
+                
+            button {
+                /* background-color: hsl(35, 44%, 65%); */
+                background-color: transparent;
+                border: 1px solid hsl(35, 44%, 65%);
+                border-radius:10px;
+                padding: 10px 10px 10px 10px;
+                /* border: none; */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;  
+                cursor: pointer;
+                
+                &:hover {
+                    background-color: hsl(35, 44%, 65%, 0.1);
+                    
+                    span {
+                        color: hsl(35, 44%, 80%);
+                    }
+
+                    svg {
+                        fill: hsl(35, 44%, 80%);
+                    }
+                }
+            };
+
+            .todolist-add-container {
+                display: none;
+                justify-content: center;
+                align-items: center;
+                background-color: hsl(0, 0%, 0%, 0.5);
+
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                z-index: 10;
+
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    background-color: hsl(220, 8%, 14%);
+                    border: 1px solid hsl(220, 8%, 20%);
+                    box-shadow: 0px 0px 10px black;
+                    border-radius: 5px;
+                    padding: 15px 15px 15px 15px;
+                    width: 60%;
+                    gap: 20px;
+
+                    .todolist-add-header {
+                        display: flex;
+                        align-items: center;
+
+                        h2 {
+                            flex: 1;
+                        }
+                        
+                        span {
+                            color: #CEAE82;
+                        }
+
+                        button {
+                            border-radius: 50%; 
+                            border: none;
+                            opacity: 0.5;
+
+                            &:hover {
+                                background-color: hsl(0, 100%, 30%);
+                            }
+                        }
+                    }
+
+                    input {
+                        background-color: transparent;
+                        border: 1px solid hsl(0, 0%, 50%);
+                        padding: 15px;
+                        border-radius: 10px;
+                    
+                        &:focus {
+                            outline: 1px solid hsl(240, 7%, 53%);
+                            border-radius: 10px;
+                        }
+                    }
+
+                    .button-container {
+                        display: flex;
+    
+                        .cancel-button {
+                            color: #AFAFAF;
+                            background-color: transparent;
+                            border: 1px solid #AFAFAF;
+                            padding: 8px 20px 8px 20px;
+                            border-radius: 5px;
+                            margin-right: 10px;
+                    
+                            transition: background-color 0.15s ease;
+                    
+                            &:hover {
+                                background-color: hsl(0, 0%, 69%, 0.1);
+                                cursor: pointer;
+                            }
+                        }
+                
+                        .save-button {
+                            background-color: #1E88E5;
+                            padding: 8px 25px 8px 25px;
+                            border-radius: 5px;
+                            border: none;
+                            transition: background-color 0.15s ease;
+                    
+                            &:hover {
+                                background-color: hsl(208, 79%, 51%, 0.85);
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        .todolist-body {
+            .todolist-table {
+                /* background-color: red; */
+                width: 100%;
+                border-collapse: collapse;
+
+                /* thead {
+                    tr {
+                        th:nth-child(1) {
+                            width: 5%
+                        }
+
+                        th:nth-child(n+2):nth-child(-n+2) {
+                            
+                        }
+                    };
+                } */
+
+                tbody {
+                    tr {
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: hsl(220, 8%, 17%);
+                        }
+
+                        td:nth-child(n+2):nth-child(-n+2) {
+                            padding: 5px 10px;
+                        }
+
+                        .check-td {
+                            width: 20px;
+
+                            div {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                /* input {
+                                    width: 18px;
+                                    height: 18px;
+                                } */
+                                
+                                input[type="checkbox"] {
+                                    appearance: none;
+                                    width: 18px;
+                                    height: 18px;
+                                    /* background-color: red; */
+                                    border: 1px solid #697565;
+                                    border-radius: 2px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                            
+                                    &::after {
+                                        content: "\2713";
+                                        font-weight: bold;
+                                        font-size: 12px;
+                                        display: none;
+                                    }
+                            
+                                    &:checked {
+                                        background-color: #4C8CFB;
+                                        border: none;
+                                    }
+                            
+                                    &:checked::after {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+
+                        .delete-td {
+                            width: 20px;
+                            text-align: center;
+                            vertical-align: middle;
+
+                            form {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                button {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 20px;
+                                    height: 20px;
+                                    background-color: transparent;
+                                    border: none;
+                                    border-radius: 50%;
+                                    cursor: pointer;
+
+                                    &:hover {
+                                        background-color: hsl(220, 8%, 22%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

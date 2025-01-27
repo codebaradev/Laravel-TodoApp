@@ -16,5 +16,7 @@
 </head>
 <body>
     @yield('content')
+    
+    <script src="/scripts/main.js"></script>
 </body>
 </html>

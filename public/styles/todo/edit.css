@@ -1,0 +1,133 @@
+.dashboard-section {
+    /* background-color: red; */
+    margin-left: 200px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 20px;
+
+    .todo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: hsl(220, 8%, 14%);
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+    
+        form {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px;
+            gap: 20px;
+
+            .text-field {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                input {
+                    background-color: transparent;
+                    border: 1px solid hsl(0, 0%, 50%);
+                    padding: 15px;
+                    border-radius: 10px;
+                
+                    &:focus {
+                        outline: 1px solid hsl(240, 7%, 53%);
+                        border-radius: 10px;
+                    }
+                }
+            }
+
+            .checkbox-field {
+                display: flex;
+                gap: 10px;
+                
+                input {
+                    appearance: none;
+                    width: 23px;
+                    height: 23px;
+                    /* background-color: red; */
+                    border: 1px solid #697565;
+                    border-radius: 2px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer ;
+                    
+                    &::after {
+                        cursor: pointer;
+                        content: "\2713";
+                        font-weight: bold;
+                        font-size: 12px;
+                        display: none;
+                    }
+            
+                    &:checked {
+                        background-color: #4C8CFB;
+                        border: none;
+                    }
+            
+                    &:checked::after {
+                        display: block;
+                    }
+                }
+            }
+
+            .description-field {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                flex: 1;
+
+                textarea {
+                    flex: 1;
+                    background-color: transparent;
+                    border: none;
+                    flex: 1;
+                    resize: none;
+        
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+    
+    
+            .button-container {
+                display: flex;
+    
+                .cancel-button {
+                    color: #AFAFAF;
+                    background-color: transparent;
+                    border: 1px solid #AFAFAF;
+                    padding: 8px 20px 8px 20px;
+                    border-radius: 5px;
+                    margin-right: 10px;
+            
+                    transition: background-color 0.15s ease;
+            
+                    &:hover {
+                        background-color: hsl(0, 0%, 69%, 0.1);
+                        cursor: pointer;
+                    }
+                }
+        
+                .save-button {
+                    background-color: #1E88E5;
+                    padding: 8px 25px 8px 25px;
+                    border-radius: 5px;
+                    border: none;
+                    transition: background-color 0.15s ease;
+            
+                    &:hover {
+                        background-color: hsl(208, 79%, 51%, 0.85);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
